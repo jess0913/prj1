@@ -58,10 +58,6 @@
 		<div id="site-content" class="content-wrapper">
 			<tiles:insertAttribute name="body" />
 		</div>
-	
-		<footer id="footer" class="main-footer">
-			<tiles:insertAttribute name="footer" />
-		</footer>
 	</div>
 </body>
 <script>

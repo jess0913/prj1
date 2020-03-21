@@ -16,4 +16,13 @@ public class BoardController {
 		mav.setViewName("jsp/board/main");
 		return mav;
 	}
+	
+	@RequestMapping("/pop")
+	public ModelAndView popMain() {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		mav.setViewName("jsp/board/pop");
+		return mav;
+	}
 }
