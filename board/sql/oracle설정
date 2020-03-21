@@ -1,0 +1,14 @@
+
+#테이블 스페이스 생성
+create tablespace board
+datafile 'F:/app/kevin/oradata/orcl/board.dbf' size 500m;
+
+
+# 유저 생성 및 테이블 스페이스 설정
+CREATE USER admin IDENTIFIED BY admin DEFAULT TABLESPACE board TEMPORARY TABLESPACE TEMP;
+
+#권한 설정
+grant connect, dba, resource to admin;
+
+
+
