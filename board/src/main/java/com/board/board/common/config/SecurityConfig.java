@@ -24,7 +24,7 @@ import com.board.board.common.handler.AuthFailureHandler;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalAuthentication
-@ComponentScan(basePackages = {"com.camp.admin.*"})
+@ComponentScan(basePackages = {"com.board.board.*"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -93,7 +93,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          	.authorizeRequests()
          	.antMatchers("/admin/**").hasRole("ADMIN")
 			.antMatchers("/anonymous*").anonymous()
-			.antMatchers("/api/**").permitAll()
+			.antMatchers("/board/**").permitAll()
 			.antMatchers("/login").permitAll()
 			.anyRequest().authenticated()
 			.and()

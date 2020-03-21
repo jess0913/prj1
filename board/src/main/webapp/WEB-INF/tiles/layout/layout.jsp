@@ -28,83 +28,12 @@
 <script src="<c:url value='/js/bootstrap.min.js' />"></script>
 <script src="<c:url value='/js/adminlte.min.js' />"></script>
 
-<!-- bootstrap datepicker -->
-<script src="<c:url value='/js/bootstrap-datepicker.min.js' />"></script>
-<script src="<c:url value='/js/bootstrap-datetimepicker.js' />"></script>
 <!-- common js -->
 <script src="<c:url value='/js/common.js' />"></script>
-<!-- 구글 차트 부분 -->
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>  
-
 <style type="text/css">
 .top-buffer { margin-top:20px; }
 </style>
 <script>
-	var title = "${paramMap.title }";
-	$(function () {
-		var parentCode = "${param.topMenu}";
-		var leftMenuCode = "${param.leftMenuCode}";
-
-		$.ajax({
-			url      : '/menu/getHeaderMenu',		        
-			type     : 'POST',
-			error    : function( request, status, error ){
-// 		            alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + error);
-			},
-			success : function( headerMenuList ) {
-				$( "#header" ).html( headerMenuList );
-			}
-		});
-		
-		appendLeftMenu( parentCode, leftMenuCode );			
-	})
-	
-	function formSubmit() {
-		document.getElementById( "logoutForm" ).submit();
-	}
-
-	function appendLeftMenu( parentCode, leftMenuCode ){
-		 $.ajax({
-		        url      : '/menu/getLeftMenu',
-		        data     : { "parentCode": parentCode, "leftMenuCode": leftMenuCode},
-		        type     : 'POST',
-		        error    : function( request, status, error ){
-// 		            alert("code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + error);
-		        },
-		        success : function( leftMenuList ) {
-		        	$( "#sidemenu" ).html( leftMenuList );
-		        }
-		});
-		 
-	}
-	
-	// 숫자만 입력
-	function onlyNumber(event){
-	    event = event || window.event;
-	    var keyID = (event.which) ? event.which : event.keyCode;
-	    if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
-	        return;
-	    else
-	        return false;
-	}
-
-	//숫자만 입력 
-	function removeChar(event) {
-	    event = event || window.event;
-	    var keyID = (event.which) ? event.which : event.keyCode;
-	    if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
-	        return;
-	    else
-	        event.target.value = event.target.value.replace(/[^0-9]/g, "");
-	}
-
-	// 메뉴 이동
-	function menuMove(url, topMenu, leftMenuCode){
-		$("#menuMoveFrm").attr("action", url);
-		$("#menuMoveFrm input[name='topMenu']").val(topMenu);
-		$("#menuMoveFrm input[name='leftMenuCode']").val(leftMenuCode);
-		$("#menuMoveFrm").submit();
-	}
 </script>
 
 </head>
