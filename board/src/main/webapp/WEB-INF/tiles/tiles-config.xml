@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="welcome" template="/WEB-INF/tiles/layout/loginLayout.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+	</definition>
+	
+	<definition name="/login" extends="welcome">
+		<put-attribute name="body" value="/WEB-INF/jsp/login/login.jsp"/>
+	</definition>
+
+	<!-- 페이지 템플릿(레이아웃)과 템플릿을 구성하는 각 부분을 모두 이름을 붙여 선언한다 -->
+	<definition name="base-definition" template="/WEB-INF/tiles/layout/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/template/menu.jsp"/>
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+	</definition>
+		
+	<definition name="/*" extends="base-definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp" />
+	</definition>
+		
+	<definition name="/*/*" extends="base-definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="/*/*/*" extends="base-definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp" />
+	</definition>
+
+</tiles-definitions>
