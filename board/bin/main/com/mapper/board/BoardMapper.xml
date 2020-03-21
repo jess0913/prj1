@@ -2,4 +2,54 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.board.board.dao.BoardDao">
 	
+	<select id="getNotiList" resultType="hashMap">
+		<![CDATA[
+			SELECT id
+				 , title
+				 , description
+				 , createDate
+				 , createUser
+				 , updateDate
+				 , updateUser
+			  FROM admin.noti
+			 ORDER BY id DESC
+		]]>
+	</select>
+	
+	<insert id="insertNoti" parameterType="hashMap">
+		<![CDATA[
+			INSERT INTO admin.NOTI 
+			( 
+				  id
+				, title
+				, description
+				, createDate
+				, createUser
+				, updateDate
+				, updateUser
+			)
+			VALUES 
+			(	
+				  id_seq.nextval 
+				, #{title}
+				, #{description}
+				, SYSDATE
+				, #{createUser}
+				, SYSDATE
+				, #{createUser}
+			)
+		]]>
+	</insert>
+	
+	<update id="updateNoti" parameterType="hashMap">
+		<![CDATA[
+			UPDATE admin.NOTI
+			SET 
+				title        = #{title}
+			  , description  = #{description}
+			  , updateDate   = SYSDATE
+			  , updateUser   = #{createUser}
+			WHERE id = #{id}
+		]]>
+	</update>
 </mapper>

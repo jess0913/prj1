@@ -1,0 +1,23 @@
+
+# 공지사항 테이블 생성
+
+CREATE TABLE ADMIN.noti 
+(
+  id NUMBER NOT NULL,
+  title VARCHAR2(250),
+  description VARCHAR2(4000),
+  createDate DATE,
+  createUser VARCHAR2(100),
+  updateDate DATE,
+  updateUser VARCHAR2(100),
+  CONSTRAINT PK_noti PRIMARY KEY(id)
+)
+TABLESPACE BOARD;
+
+
+# 공지사항 시퀀스 생성
+CREATE SEQUENCE ADMIN.id_seq
+START WITH 1
+INCREMENT BY 1
+NOCYCLE
+NOCACHE 
