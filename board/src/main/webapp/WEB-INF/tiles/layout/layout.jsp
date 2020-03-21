@@ -35,30 +35,39 @@
 </style>
 <script>
 </script>
-
+<style type="text/css">
+.parent {
+  align-items: center;
+	width: 100%;
+	height: 100vh;
+}
+.child {
+  margin: auto;
+  width: 100%;
+  height: 46vh;
+  text-align: center;
+}
+.child2 {
+  margin: auto;
+  width: 50%;
+  height: 46vh;
+  text-align: center;
+}
+</style>
 </head>
 
 <body class="sidebar-mini skin-purple-light fixed">
-	<!-- Loading Div Layer Start-->
-    <div id="loading_pop" class="layer_pop" style="display: none;">
-        <div class="load_popup" style="position:absolute;top:50%;left:50%;">
-        <p><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><path d="M75.4 126.63a11.43 11.43 0 0 1-2.1-22.65 40.9 40.9 0 0 0 30.5-30.6 11.4 11.4 0 1 1 22.27 4.87h.02a63.77 63.77 0 0 1-47.8 48.05v-.02a11.38 11.38 0 0 1-2.93.37z" fill="#ffffff" fill-opacity="1"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1200ms" repeatCount="indefinite"></animateTransform></g></svg></p>
-        <p>잠시만 기다려 주십시오</p>
-        </div>
-    </div>
-    <!-- Loading Div Layer End-->
-	<div class="wrapper">
-		<header id="header" class="main-header bg-plum-plate">
-			<tiles:insertAttribute name="header" />
-		</header>
-		<aside class="main-sidebar" id="sidemenu">
-			<tiles:insertAttribute name="menu"/>
-		</aside>
-		
-		<div id="site-content" class="content-wrapper">
-			<tiles:insertAttribute name="body" />
-		</div>
-	</div>
+<div class="parent">
+<div class="child">
+a
+</div>
+<div class="child2">
+b
+</div>
+<div class="child2">
+c
+</div>
+</div>
 </body>
 <script>
 
