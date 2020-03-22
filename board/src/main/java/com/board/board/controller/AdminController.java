@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.board.board.common.util.AuthUtil;
+import com.board.board.common.util.Pagination;
 import com.board.board.service.BoardService;
 import com.board.board.service.ContentsService;
 
@@ -37,17 +38,68 @@ public class AdminController {
 		List<Map<String,Object>> boardList = new ArrayList<Map<String,Object>>();
 		String boardType = (String) paramMap.get("boardType");
 		
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		int viewCount = Integer.parseInt( (String) paramMap.get( "selectPageCnt" ) );
+		int pageNum = Integer.parseInt( (String) paramMap.get( "pageNum" ) );
+		
+		map.put( (String) paramMap.get( "searchCondi" ), paramMap.get( "searchText" ) );
+		
+		int totalCnt = 0;
 		if( "NOTI".equals( boardType ) ) {
-			boardList = boardService.getAdminNotiList();
+			totalCnt = boardService.getTotalNotiCount( map );
 		}
 		else {
-			boardList = contentsService.getAdminContentsList();
+			totalCnt = contentsService.getTotalContentsCount( map );
 		}
-		System.out.println("boardList===>" + boardList.toString());
+		
+		Pagination page = new Pagination();
+		page.setRowCnt( viewCount );
+		page.setCurrentPage( pageNum );
+		page.setTotalCnt( totalCnt );
+		
+		map.put( "startNum", page.getStartIndex() );
+		map.put( "pageCnt", viewCount );
+		
+		if( "NOTI".equals( boardType ) ) {
+			boardList = boardService.getAdminNotiList( map );
+		}
+		else {
+			boardList = contentsService.getAdminContentsList( map );
+		}
+
+		mav.addObject( "totalCnt", page.getTotalCnt() );
+		mav.addObject( "pageInfo", page );
+		
+		
+		System.out.println("boardList====>" + boardList.toString());
 		mav.addObject("boardList", boardList);
 		mav.setViewName("jsp/board/result/resultList");
 		return mav;
 	}
+	
+	@RequestMapping("/boardDetail")
+	@ResponseBody
+	public ModelAndView boardDetail ( @RequestParam Map<String,Object> paramMap ) {
+		ModelAndView mav = new ModelAndView();
+		String boardType = (String)paramMap.get("boardType");
+		if( "NOTI".equals(boardType) ) {
+			
+			Map<String,Object> notiMap = boardService.getNoti(paramMap);
+			
+			mav.addObject("notiMap", notiMap);
+			mav.setViewName("jsp/admin/detailNotiPopup");
+		}
+		else {
+
+			Map<String,Object> contentsMap = contentsService.getContents(paramMap);
+			
+			mav.addObject("contentsMap", contentsMap);
+			mav.setViewName("jsp/admin/detailContentsPopup");
+		}
+		return mav;
+	}
+	
 	
 	//////////////////////////////////////// 공지사항 /////////////////////////////////////////////////////
 	

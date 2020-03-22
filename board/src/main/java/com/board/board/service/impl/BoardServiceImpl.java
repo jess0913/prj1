@@ -63,8 +63,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<Map<String, Object>> getAdminNotiList() {
-		return boardDao.getAdminNotiList();
+	public List<Map<String, Object>> getAdminNotiList( Map<String, Object> paramMap ) {
+		return boardDao.getAdminNotiList( paramMap );
+	}
+
+	@Override
+	public int getTotalNotiCount(Map<String, Object> map) {
+		return boardDao.getTotalNotiCount( map );
+	}
+
+	@Override
+	public Map<String, Object> getNoti(Map<String, Object> paramMap) {
+		return boardDao.getNoti( paramMap );
 	}
 
 }

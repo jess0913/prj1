@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.board.board.dao.BoardDao">
 	
-	<select id="getNotiList" resultType="hashMap">
+	<select id="getNotiList" resultType="camelMap">
 		<![CDATA[
-			SELECT id
-				 , title
-				 , description
-				 , createDate
-				 , createUser
-				 , updateDate
-				 , updateUser
+			SELECT id                                   AS id         
+				 , title                                AS title      
+				 , description                          AS description
+				 , TO_CHAR( createDate,  'YYYY-MM-DD')	AS createDate
+				 , createUser                           AS createUser
+				 , updateDate                           AS updateDate
+				 , updateUser                           AS updateUser
 			  FROM admin.noti
 			 ORDER BY id DESC
 		]]>
@@ -53,17 +53,69 @@
 		]]>
 	</update>
 	
-	<select id="getAdminNotiList" resultType="hashMap">
+	<select id="getAdminNotiList" parameterType="hashMap" resultType="camelMap">
 		<![CDATA[
-			SELECT id				AS id					
-				 , title            AS title      
-				 , description      AS description
-				 , createDate       AS createDate 
-				 , createUser       AS createUser 
-				 , updateDate       AS updateDate 
-				 , updateUser       AS updateUser 
+		SELECT *
+		  FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY id) NUM
+			 	 , id										AS id					
+				 , title            						AS title  
+				 , 'NOTI'									AS boardType    
+				 , description      						AS description
+				 , TO_CHAR( createDate,  'YYYY-MM-DD')      AS createDate 
+				 , createUser       						AS createUser 
+				 , TO_CHAR( updateDate,  'YYYY-MM-DD')      AS updateDate 
+				 , updateUser       						AS updateUser 
 			  FROM admin.noti
+			 WHERE 1=1
+		]]> 
+		<if test="title != null and title != ''">
+		<![CDATA[	
+		     AND title LIKE '%' || #{title} || '%' 	
+		]]>		
+		</if>
+		<if test="description != null and description != ''">
+		<![CDATA[	
+		     AND description LIKE '%' || #{description} || '%'
+		]]>		
+		</if>
+		<![CDATA[
 			 ORDER BY id DESC
+		  )
+		 WHERE NUM BETWEEN ${startNum} AND ${pageCnt} 	
 		]]>
+	</select>
+	
+	<select id="getTotalNotiCount" parameterType="hashMap" resultType="int">
+		<![CDATA[
+			SELECT count (*)
+			  FROM admin.noti
+			 WHERE 1=1
+		]]> 
+		<if test="title != null and title != ''">
+		<![CDATA[	
+		     AND title LIKE '%' || #{title} || '%' 	
+		]]>		
+		</if>
+		<if test="description != null and description != ''">
+		<![CDATA[	
+		     AND description LIKE '%' || #{description} || '%'
+		]]>		
+		</if>
+	</select>
+	
+	<select id="getNoti" parameterType="hashMap" resultType="camelMap">
+		<![CDATA[
+			SELECT id										AS id					
+				 , title            						AS title  
+				 , 'NOTI'									AS boardType    
+				 , description      						AS description
+				 , TO_CHAR( createDate,  'YYYY-MM-DD')      AS createDate 
+				 , createUser       						AS createUser 
+				 , TO_CHAR( updateDate,  'YYYY-MM-DD')      AS updateDate 
+				 , updateUser       						AS updateUser 
+			  FROM admin.noti
+		     WHERE id = #{id} 	
+		]]>		
 	</select>
 </mapper>

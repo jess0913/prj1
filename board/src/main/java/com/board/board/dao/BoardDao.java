@@ -14,6 +14,10 @@ public interface BoardDao {
 	
 	public void updateNoti( Map<String,Object> paramMap );
 
-	public List<Map<String, Object>> getAdminNotiList();
+	public List<Map<String, Object>> getAdminNotiList( Map<String,Object> paramMap );
+
+	public int getTotalNotiCount( Map<String, Object> map );
+
+	public Map<String, Object> getNoti( Map<String, Object> paramMap );
 	
 }

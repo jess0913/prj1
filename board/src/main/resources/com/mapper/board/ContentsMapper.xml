@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.board.board.dao.ContentsDao">
 	
-	<select id="getContentsList" resultType="hashMap">
+	<select id="getContentsList" resultType="camelMap">
 		<![CDATA[
 			SELECT contentsId
 			     , fileName
@@ -61,10 +61,14 @@
 		]]>
 	</update>
 	
-	<select id="getAdminContentsList" resultType="hashMap">
+	<select id="getAdminContentsList" parameterType="hashMap" resultType="camelMap">
 		<![CDATA[
-			SELECT contentsId			AS id  
-			     , fileName             AS fileName    
+		SELECT *
+		  FROM (
+			SELECT ROW_NUMBER() OVER (ORDER BY contentsId) NUM
+			     , contentsId			AS id  
+			     , fileName             AS fileName 
+			     , 'CONTENTS'			AS boardType   
 			     , fileUrl              AS fileUrl     
 			     , createDate           AS createDate  
 			     , createUser           AS createUser  
@@ -73,7 +77,57 @@
 			     , description          AS description 
 			     , contentsName         AS title
 			  FROM admin.contents
-			 ORDER BY id DESC
+		 	 WHERE 1=1
+		]]> 
+		<if test="title != null and title != ''">
+		<![CDATA[	
+		      AND contentsName LIKE '%' || #{title} || '%' 	
+		]]>		
+		</if>
+		<if test="description != null and description != ''">
+		<![CDATA[	
+		      AND description LIKE '%' || #{description} || '%'
+		]]>		
+		</if>
+		<![CDATA[
+			 ORDER BY contentsId DESC
+		  )
+		 WHERE NUM BETWEEN ${startNum} AND ${pageCnt} 		 
 		]]>
+	</select>
+	
+	<select id="getTotalContentsCount" parameterType="hashMap" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			  FROM admin.contents
+		 	 WHERE 1=1
+		]]> 
+		<if test="title != null and title != ''">
+		<![CDATA[	
+		      AND contentsName LIKE '%' || #{title} || '%' 	
+		]]>		
+		</if>
+		<if test="description != null and description != ''">
+		<![CDATA[	
+		      AND description LIKE '%' || #{description} || '%'
+		]]>		
+		</if>
+	</select>
+	
+	<select id="getContents" parameterType="hashMap" resultType="camelMap">
+		<![CDATA[
+			SELECT contentsId			AS id  
+			     , fileName             AS fileName 
+			     , 'CONTENTS'			AS boardType   
+			     , fileUrl              AS fileUrl     
+			     , createDate           AS createDate  
+			     , createUser           AS createUser  
+			     , updateDate           AS updateDate  
+			     , updateUser           AS updateUser  
+			     , description          AS description 
+			     , contentsName         AS title
+			  FROM admin.contents
+		 	 WHERE contentsId LIKE '%' || #{id} || '%' 	
+		]]>		
 	</select>
 </mapper>

@@ -1,23 +1,18 @@
 package com.board.board.service.impl;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.ZipEntry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.board.board.common.util.DateUtil;
 import com.board.board.dao.ContentsDao;
 import com.board.board.service.ContentsService;
 
@@ -110,10 +105,16 @@ public class ContentsServiceImpl implements ContentsService {
 	}
 
 	@Override
-	public List<Map<String, Object>> getAdminContentsList() {
-		return contentsDao.getAdminContentsList();
+	public List<Map<String, Object>> getAdminContentsList( Map<String, Object> paramMap ) {
+		return contentsDao.getAdminContentsList( paramMap );
 	}
 
+
+	@Override
+	public int getTotalContentsCount(Map<String, Object> map) {
+		return contentsDao.getTotalContentsCount( map );
+	}
+	
 	private File convert(MultipartFile file) throws IOException {	
 		String fileName = file.getOriginalFilename();
 		if(fileName.indexOf("\\") != -1) {
@@ -126,4 +127,10 @@ public class ContentsServiceImpl implements ContentsService {
 	    fos.close();
 	    return convFile;
 	}
+
+	@Override
+	public Map<String, Object> getContents(Map<String, Object> paramMap) {
+		return contentsDao.getContents( paramMap );
+	}
+
 }

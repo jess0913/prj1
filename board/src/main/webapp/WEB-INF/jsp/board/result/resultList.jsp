@@ -6,24 +6,16 @@
 <div class="box-header">
   	<h3 class="box-title">리스트</h3>
 </div>
-<div class="box-body table-responsive">
+<div class="box-body">
 	<table id="memberTable" class="table table-hover">
-		<colgroup>
-			<col width="5%">
-			<col width="10%">
-			<col width="*">
-			<col width="10%">
-			<col width="10%">
-			<col width="10%">
-		</colgroup>
 		<thead>
 	 		<tr role="row">
-			 	<th class="sorting text-center">ID</th>
-			 	<th class="sorting text-center">타입</th>
-			 	<th class="sorting text-center">제목</th>
-			 	<th class="sorting text-center">작성자</th>
-			 	<th class="sorting text-center">작성일</th>
-			 	<th class="sorting text-center">관리</th>
+			 	<th class="sorting text-center" width="5%"	>ID</th>
+			 	<th class="sorting text-center" width="10%" >타입</th>
+			 	<th class="sorting text-center" width="*"	>제목</th>
+			 	<th class="sorting text-center" width="10%" >작성자</th>
+			 	<th class="sorting text-center" width="10%" >작성일</th>
+			 	<th class="sorting text-center" width="10%" >관리</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,19 +25,17 @@
 						<tr role="row">
 						    <td class="sorting text-center">${idx.index + 1}</td>
 						    <td class="sorting text-center">
-						    	<c:if test="${item.boardType eq 'NOTI' }">공지사항</c:if>
-						    	<c:if test="${item.boardType eq 'CONTENTS'}">자료실</c:if>
+						    	<c:if test="${item.boardtype eq 'NOTI' }">공지사항</c:if>
+						    	<c:if test="${item.boardtype eq 'CONTENTS'}">자료실</c:if>
 						    </td>
-						    <td class="sorting text-center">${item.title }</td>
-						    <td class="sorting text-center" onclick="detail('${item.id}','${item.boardType}')" style="cursor: pointer;">${item.title }</td>
-						    <td class="sorting text-center">${item.createUser} </td>
-						    <td class="sorting text-center">${item.createDate} </td>
+						    <td class="sorting text-center" onclick="detail('${item.id}','${item.boardtype}')" style="cursor: pointer;">${item.title }</td>
+						    <td class="sorting text-center">${item.createuser} </td>
+						    <td class="sorting text-center">${item.createdate} </td>
 						    <td class="sorting text-center">
-					    		<button type="button" class="btn btn-primary" onclick="update('${item.id}','${item.boardType}')">수정</button>
-					        	<button type="button" class="btn btn-danger" onclick="delete('${item.id}','${item.boardType}')">삭제</button>
+					    		<button type="button" class="btn btn-primary" onclick="update('${item.id}','${item.boardtype}')">수정</button>
+					        	<button type="button" class="btn btn-danger" onclick="delete('${item.id}','${item.boardtype}')">삭제</button>
 							</td>
 						</tr>
-						<c:set var="rowIdx" value="${rowIdx-1 }"></c:set>
 					</c:forEach>
 	         	</c:when>
 	         	<c:otherwise>

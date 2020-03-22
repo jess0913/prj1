@@ -14,6 +14,10 @@ public interface ContentsDao {
 	
 	public void updateContents ( Map<String,Object> parmaMap );
 
-	public List<Map<String, Object>> getAdminContentsList();
+	public List<Map<String, Object>> getAdminContentsList( Map<String,Object> paramMap );
+
+	public int getTotalContentsCount(Map<String, Object> map);
+
+	public Map<String, Object> getContents(Map<String, Object> paramMap);
 
 }

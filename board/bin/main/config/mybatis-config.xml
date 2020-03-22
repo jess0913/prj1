@@ -13,5 +13,6 @@
 		<typeAlias alias="hashMap" 	type="java.util.HashMap"/>
 		<typeAlias alias="int" type="java.lang.Integer"/>
 		<typeAlias alias="double" type="java.lang.Double"/>
+		<typeAlias alias="camelMap" type="com.board.board.common.util.CamelMap"/>
 	</typeAliases>
 </configuration>

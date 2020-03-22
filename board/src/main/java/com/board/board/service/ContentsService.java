@@ -11,5 +11,9 @@ public interface ContentsService {
 	
 	public Map<String,Object> updateContents ( Map<String,Object> paramMap );
 
-	public List<Map<String, Object>> getAdminContentsList();
+	public List<Map<String, Object>> getAdminContentsList( Map<String, Object> paramMap );
+
+	public int getTotalContentsCount( Map<String, Object> map );
+
+	public Map<String, Object> getContents( Map<String, Object> paramMap );
 }

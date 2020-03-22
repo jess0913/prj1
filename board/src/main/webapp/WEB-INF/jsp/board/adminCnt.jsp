@@ -95,22 +95,17 @@
 			popupCenterModel("/admin/createContents", "자료 등록", "800", "600", "false"); 			
 		}
 	
-		function detail(boardId, boardSeq) {
-			$("#updateFrm input[name='boardId']").val( boardId );
-			$("#updateFrm input[name='boardSeq']").val( boardSeq );
-			$("#updateFrm").attr( "action", "/camp/boardDetail" );
-			$("#updateFrm").submit();
+		function detail(id, boardType) {
+			popupCenterModel("/admin/boardDetail?id="+id+"&boardType="+boardType, "상세보기", "800", "600", "false"); 	
 		}
 		
-		function update(boardId, boardSeq) {
-			$("#updateFrm input[name='boardId']").val( boardId );
-			$("#updateFrm input[name='boardSeq']").val( boardSeq );
-			$("#updateFrm").attr( "action", "/camp/boardUpdateForm" );
-			$("#updateFrm").submit();
+		function update(id, boardType) {
+			popupCenterModel("/admin/boardUpdate?id="+id+"&boardType="+boardType, "상세보기", "800", "600", "false"); 	
 		}
 	</script>
 </head>
 <body class="skin-purple sidebar-mini" style="height: auto; min-height: 100%;" >
+ <div class="col-md-12">
 	<form id="frm" action="" method="post">
 		<input type="hidden" id="pageNum" name="pageNum" value="">
 		
@@ -133,10 +128,10 @@
 			<div class="col-md-5">
 				<div class="form-inline form-group pull-right">
 					<select id="selectPageCnt" name="selectPageCnt" class="form-control">
-		            	<option value="100" selected="selected">100개 보기</option>
-					  	<option value="300">300개 보기</option>
-						<option value="500">500개 보기</option>
-						<option value="1000">1000개 보기</option>
+		            	<option value="10" selected="selected">10개 보기</option>
+					  	<option value="30">30개 보기</option>
+						<option value="50">50개 보기</option>
+						<option value="100">100개 보기</option>
 		            </select>
 					<button type="button" class="btn btn-primary btn-flat" id="createNoti">공지사항 등록</button>
 					<button type="button" class="btn btn-primary btn-flat" id="createContents">자료 등록</button>
@@ -150,5 +145,6 @@
 			<%@include  file="result/resultList.jsp" %>
 		</div>
 	</form>
+</div>
 </body>
 </html>
