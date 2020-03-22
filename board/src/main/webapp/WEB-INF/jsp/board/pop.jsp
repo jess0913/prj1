@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>°øÁö»çÇ×</title>
+<meta charset="utf-8">
+<title>ê³µì§€ì‚¬í•­</title>
 <script>
 function setCookie(name, value, expiredays){
     var todayDate = new Date();
@@ -23,7 +23,7 @@ body {
   margin:0;
 }
 .parent {
-  align-items: center;
+  align-items: left;
 	width: 100%;
 	height: 99vh;
   display: inline-block;
@@ -32,7 +32,7 @@ body {
   float:left;
   width: 100%;
   height: 69vh;
-  text-align: center;
+  text-align: left;
   background-color: #fcba03;
   display: inline-block;
 }
@@ -41,7 +41,7 @@ body {
   margin: 0;
   width: 50%;
   height: 25vh;
-  text-align: center;
+  text-align: left;
   background-color: #7d7d7d;
   display: inline-block;
   
@@ -50,27 +50,28 @@ body {
   float:left;
   width: 100%;
   height: 5vh;
-  text-align: right;
+  text-align: left;
   background-color: #fcba03;
   display: inline-block;
 }
 </style>
 </head>
 <body>
-<div class="parent">
-<div class="child">
-°øÁö»çÇ×
-</div>
-<div class="child2">
-°øÁö»çÇ× ¸ñ·Ï
-</div>
-<div class="child2">
-ÀÚ·á½Ç
-</div>
-<div id="div_laypopup" align="center" class="child3">  
-    <input type="checkbox" onClick="closePop();">¿À´Ã ÇÏ·ç µ¿¾È ¿­Áö ¾ÊÀ½
-    <a href="javascript:self.close();" onfocus="this.blur()">[´İ±â]</a>
- </div> 
-</div>
+	
+	<div class="parent">
+		<div class="child">
+			<%@include  file="include/detailNoti.jsp" %>
+		</div>			
+		<div class="child2">
+			<%@include  file="include/notiList.jsp" %>
+		</div>
+		<div class="child2">
+			<%@include  file="include/contentsList.jsp" %>
+		</div>
+		<div id="div_laypopup" align="center" class="child3">  
+		    <input type="checkbox" onClick="closePop();">ì˜¤ëŠ˜ í•˜ë£¨ ë™ì•ˆ ì—´ì§€ ì•ŠìŒ
+		    <a href="javascript:self.close();" onfocus="this.blur()">[ë‹«ê¸°]</a>
+		 </div> 
+	</div>
 </body>
 </html>

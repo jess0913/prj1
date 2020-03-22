@@ -11,4 +11,6 @@ public interface BoardService {
 	
 	public Map<String, Object> updateNoti( Map<String, Object> paramMap );
 
+	public List<Map<String, Object>> getAdminNotiList();
+
 }

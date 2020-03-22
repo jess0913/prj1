@@ -1,10 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <script>
 	//window.open(popUrl,"",popOption);
 	pevent();
@@ -26,14 +21,9 @@
 	        return "";
 	    }
 	    if (getCookie("popname") != "done"){
-	    	var popUrl = "pop";	//ÆË¾÷Ã¢¿¡ Ãâ·ÂµÉ ÆäÀÌÁö URL
-	    	var popOption = "width=800, height=600, resizable=yes, scrollbars=no, status=no;";    //ÆË¾÷Ã¢ ¿É¼Ç(optoin)
+	    	var popUrl = "pop";	//íŒì—…ì°½ì— ì¶œë ¥ë  í˜ì´ì§€ URL
+	    	var popOption = "width=800, height=600, resizable=yes, scrollbars=no, status=no;";    //íŒì—…ì°½ ì˜µì…˜(optoin)
 	        window.open(popUrl,"",popOption);
 	    }
 	}
 </script>
-</head>
-<body>
-	¸ŞÀÎÈ­¸é22
-</body>
-</html>

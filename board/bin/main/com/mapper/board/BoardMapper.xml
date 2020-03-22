@@ -52,4 +52,18 @@
 			WHERE id = #{id}
 		]]>
 	</update>
+	
+	<select id="getAdminNotiList" resultType="hashMap">
+		<![CDATA[
+			SELECT id				AS id					
+				 , title            AS title      
+				 , description      AS description
+				 , createDate       AS createDate 
+				 , createUser       AS createUser 
+				 , updateDate       AS updateDate 
+				 , updateUser       AS updateUser 
+			  FROM admin.noti
+			 ORDER BY id DESC
+		]]>
+	</select>
 </mapper>

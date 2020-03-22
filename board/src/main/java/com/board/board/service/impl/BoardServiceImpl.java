@@ -62,4 +62,9 @@ public class BoardServiceImpl implements BoardService {
 		return retMap;
 	}
 
+	@Override
+	public List<Map<String, Object>> getAdminNotiList() {
+		return boardDao.getAdminNotiList();
+	}
+
 }

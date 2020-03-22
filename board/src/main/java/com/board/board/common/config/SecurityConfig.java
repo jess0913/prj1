@@ -103,7 +103,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// loginProcessingUrl () - 사용자 이름과 비밀번호를 제출할 URL
 				.loginProcessingUrl("/login")
 				// defaultSuccessUrl () - 로그인 성공 후 방문 페이지
-				.defaultSuccessUrl("/home", true)
+				.defaultSuccessUrl("/adminCnt", true)
 				// failureUrl () - 로그인 실패 후 방문 페이지
 				.failureUrl("/login?error=fail")
 //				.failureHandler(authFailureHandler)

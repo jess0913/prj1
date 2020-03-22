@@ -13,5 +13,7 @@ public interface BoardDao {
 	public void insertNoti( Map<String,Object> paramMap );
 	
 	public void updateNoti( Map<String,Object> paramMap );
+
+	public List<Map<String, Object>> getAdminNotiList();
 	
 }
