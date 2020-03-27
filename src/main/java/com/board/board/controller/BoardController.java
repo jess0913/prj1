@@ -44,7 +44,9 @@ public class BoardController {
 		List<Map<String,Object>> notiList = boardService.getAdminNotiList( map );
 		
 		Map<String,Object> detailMap = new HashMap<String,Object>();
-		detailMap = notiList.get(0);
+		if( notiList.size() > 0 ) {
+			detailMap = notiList.get(0);
+		}
 		
 		// 자료실 리스트 
 		List<Map<String,Object>> contentsList = contentsService.getAdminContentsList(map);
