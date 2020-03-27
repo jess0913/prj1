@@ -55,11 +55,32 @@ body {
   display: inline-block;
 }
 </style>
+<script type="text/javascript">
+	function detailNotice( id ){
+
+		$.ajax({
+			type:"POST",
+			url:"/board/getNoti",
+			data: {
+					"id" : id
+				}, 
+			success : function( data ) {
+				$("#result").html(data);
+			},		           
+			error : function( xhr, status, error ) {
+				// alert("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
+//					alert( "error code:"+xhr.status );
+			}
+		});
+		
+	}
+
+</script>
 </head>
 <body>
 	
 	<div class="parent">
-		<div class="child">
+		<div class="child" id="result">
 			<%@include  file="include/detailNoti.jsp" %>
 		</div>			
 		<div class="child2">

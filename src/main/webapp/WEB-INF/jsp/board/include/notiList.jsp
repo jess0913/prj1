@@ -10,10 +10,9 @@
 	</div>
 	<div class="box-body">
 		<ul>
-			<li>자료실 1</li>
-			<li>자료실 2</li>
-			<li>자료실 3</li>
-			<li>자료실 4</li>
+			<c:forEach items="${notiList }" var="item" >
+				<li><a style="cursor: pointer;" onclick="detailNotice('${item.id }')">${item.title }</a></li>
+			</c:forEach>
 		</ul>
 	</div>
 </div>
