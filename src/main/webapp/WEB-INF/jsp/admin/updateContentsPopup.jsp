@@ -327,7 +327,7 @@
 	<section class="content">
 		<h1>
 			자료실
-			<small> - 자료 등록</small>
+			<small> - 자료 수정</small>
 		</h1>
 		<form id="frm" name="frm" enctype="multipart/form-data">
 			
