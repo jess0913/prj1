@@ -6,7 +6,7 @@
 
 <div class="box">
 	<div class="box-header">
-	  	<h3 class="box-title">공지사항 리스트</h3>
+	  	<h3 class="box-title">&nbsp;&nbsp;<a href="list">공지사항 목록</a></h3>
 	</div>
 	<div class="box-body">
 		<ul>

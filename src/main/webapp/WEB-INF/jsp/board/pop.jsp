@@ -57,7 +57,7 @@
 	  width: 100%;
 	  height: 69vh;
 	  text-align: left;
-	  background-color: #fcba03;
+	  //background-color: #fcba03;
 	  display: inline-block;
 	}
 	.child2 {
@@ -66,7 +66,7 @@
 	  width: 50%;
 	  height: 25vh;
 	  text-align: left;
-	  background-color: #7d7d7d;
+	  //background-color: #7d7d7d;
 	  display: inline-block;
 	  
 	}
@@ -75,7 +75,7 @@
 	  width: 100%;
 	  height: 5vh;
 	  text-align: left;
-	  background-color: #fcba03;
+	  //background-color: #fcba03;
 	  display: inline-block;
 	}
 	</style>
