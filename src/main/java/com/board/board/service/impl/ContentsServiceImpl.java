@@ -40,8 +40,11 @@ public class ContentsServiceImpl implements ContentsService {
 		try {
 					
 			MultipartFile mFile = (MultipartFile) paramMap.get( "contentsFile" );
-			String oriFileName =  mFile.getOriginalFilename();
-			String fileName = System.currentTimeMillis() + "_" + mFile.getOriginalFilename();
+			
+			
+			String oriFileName =  mFile.getOriginalFilename().indexOf("\\") > 0 ? 
+					mFile.getOriginalFilename().substring(mFile.getOriginalFilename().lastIndexOf("\\")+1, mFile.getOriginalFilename().length()) : mFile.getOriginalFilename();
+			String fileName = System.currentTimeMillis() + "_" + oriFileName;
 			
 			File destdir = new File(FILE_URL); //디렉토리 가져오기
 			
