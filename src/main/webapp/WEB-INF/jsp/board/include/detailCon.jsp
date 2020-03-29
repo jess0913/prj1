@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@include file="/WEB-INF/jsp/common/common.jsp" %>
+	<link href="<c:url value='/css/font-awesome.min.css' />" rel="stylesheet"></link>
+	<link href="<c:url value='/css/ionicons.min.css' />" 	 rel="stylesheet"></link>
 <style>
-.badge {
+.badge2 {
    animation: blink-animation 1s steps(5, start) 10 alternate;
    -webkit-animation: blink-animation 1s steps(5, start) 10 alternate;
 }
@@ -30,7 +32,7 @@
 	  	<h3 class="box-title">자료실</h3>
 	</div>
 	<hr>
-	<div class="badge">
+	<div class="badge2">
 		<h4>${detailMap.title} </h4>
 		<div style="text-align: left;">
 			${detailMap.description}
