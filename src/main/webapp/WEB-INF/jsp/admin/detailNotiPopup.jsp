@@ -52,7 +52,7 @@
 	<section class="content">
 		<h1>
 			공지사항
-			<small> - 공지사항 등록</small>
+			<small> - 공지사항 상세</small>
 		</h1>
 		<form id="frm" name="frm">
 			

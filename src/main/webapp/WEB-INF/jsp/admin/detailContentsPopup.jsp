@@ -70,7 +70,7 @@
 	<section class="content">
 		<h1>
 			자료실
-			<small> - 자료 등록</small>
+			<small> - 자료 상세</small>
 		</h1>
 		<form id="frm" name="frm" enctype="multipart/form-data">
 			
@@ -101,6 +101,7 @@
 									<tr>
 										<td><span class="red">*</span>첨부파일</td>
 										<td>
+											<i class="fa fa-floppy-o"></i>
 											<a href="${contentsMap.fileurl }">${contentsMap.filename }</a>
 										</td>
 									</tr>								
