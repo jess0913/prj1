@@ -102,7 +102,7 @@
 										<td><span class="red">*</span>첨부파일</td>
 										<td>
 											<i class="fa fa-floppy-o"></i>
-											<a href="${contentsMap.fileurl }">${contentsMap.filename }</a>
+											<a href="<c:url value="${contentsMap.fileurl }"/>">${contentsMap.filename }</a>
 										</td>
 									</tr>								
 								</tbody>
