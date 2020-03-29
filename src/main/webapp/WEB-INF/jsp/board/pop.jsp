@@ -24,7 +24,6 @@
 		}
 	
 		function detailNotice( id ){
-			alert(id);
 			$.ajax({
 				type:"POST",
 				url:"/board/getNoti",
