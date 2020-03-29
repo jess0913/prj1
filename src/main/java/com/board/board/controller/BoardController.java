@@ -95,8 +95,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/list")
-	public ModelAndView adminCnt () {
+	@ResponseBody
+	public ModelAndView adminCnt ( @RequestParam(value="boardType") String boardType) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println("boardType====>" + boardType);
+		mav.addObject("boardType", boardType);
 		
 		mav.setViewName("jsp/board/include/list");
 		return mav;

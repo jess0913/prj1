@@ -22,6 +22,8 @@
 	<script type="text/javascript">
 	
 		$(function () {
+			
+			
 			$( "#search" ).click( function() {
 				goSearch();
 			});
@@ -38,6 +40,11 @@
 			$( "#createContents" ).click( function() {
 				createContents();
 			});
+			
+			var boardType = "${boardType}";
+			
+			console.log();
+			$("#boardType > option[value=CONTENTS").attr("selected","true");
 			
 			goSearch();
 		})
@@ -91,6 +98,7 @@
 			location.href = "/board/boardDetail?id="+id+"&boardType="+boardType; 	
 		}
 		
+		
 	</script>
 </head>
 <body class="skin-purple sidebar-mini" style="height: auto; min-height: 100%;" >
@@ -101,7 +109,7 @@
 		<div class="row">
 			<div class="col-md-7">
 				<div class="form-inline form-group">
-					<select id="searchCondi" name="boardType" class="form-control">
+					<select id="boardType" name="boardType" class="form-control">
 						<option value="NOTI" selected="selected">공지사항</option>
 						<option value="CONTENTS">자료실</option>						
 					</select>

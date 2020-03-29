@@ -19,7 +19,7 @@ public interface BoardDao {
 	public int getTotalNotiCount( Map<String, Object> map );
 
 	public Map<String, Object> getNoti( Map<String, Object> paramMap );
-
+	
 	public void deleteNoti( Map<String, Object> paramMap );
 	
 }

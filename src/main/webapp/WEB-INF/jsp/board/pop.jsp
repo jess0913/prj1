@@ -40,6 +40,21 @@
 			});
 			
 		}
+		function detailContent( id ){
+			$.ajax({
+				type:"POST",
+				url:"/contents/getContents",
+				data: {
+						"id" : id
+					}, 
+				success : function( data ) {
+					$("#result").html(data);
+				},		           
+				error : function( xhr, status, error ) {
+				}
+			});
+			
+		}
 	</script>
 	<style type="text/css">
 	body {

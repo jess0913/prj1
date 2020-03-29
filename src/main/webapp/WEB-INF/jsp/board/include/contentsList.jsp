@@ -6,12 +6,12 @@
 
 <div class="box">
 	<div class="box-header">
-	  	<h3 class="box-title">자료실</h3>
+	  	<h3 class="box-title"><a href="list?boardType='CONTENTS'">자료실</a></h3>
 	</div>
 	<div class="box-body">
 		<ul>
 			<c:forEach items="${contentsList }" var="item" >
-				<li><a href="${item.fileurl }">${item.filename }</a></li>
+				<li><a style="cursor: pointer;" onclick="detailContent('${item.id }')">${item.title }</a></li>
 			</c:forEach>
 		</ul>
 	</div>

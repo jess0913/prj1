@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.board.board.service.ContentsService;
@@ -29,6 +31,19 @@ public class ContentsConteroller {
 		
 		mav.addObject("contentsList", contentsList);
 		return mav;
+	}
+	
+	@RequestMapping("/getContents")
+	@ResponseBody
+	public ModelAndView getNoti( @RequestParam Map<String,Object> map ) {
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String,Object> detailMap = contentsService.getContents(map);
+		
+		mav.addObject("detailMap", detailMap);
+		mav.setViewName("jsp/board/include/detailCon");
+		return mav;
+		
 	}
 	
 }

@@ -135,7 +135,7 @@
 		<div class="row">
 			<div class="col-md-7">
 				<div class="form-inline form-group">
-					<select id="searchCondi" name="boardType" class="form-control">
+					<select id="boardType" name="boardType" class="form-control">
 						<option value="NOTI" selected="selected">공지사항</option>
 						<option value="CONTENTS">자료실</option>						
 					</select>

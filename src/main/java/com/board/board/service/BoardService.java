@@ -16,7 +16,7 @@ public interface BoardService {
 	public int getTotalNotiCount( Map<String, Object> map );
 
 	public Map<String, Object> getNoti( Map<String, Object> paramMap );
-
+	
 	public Map<String, Object> deleteNoti(Map<String, Object> paramMap);
 
 }

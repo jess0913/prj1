@@ -3,10 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
+<style>
+a{
+color:gray;
+text-decoration:none;
+}
+</style>
 <div class="box">
 	<div class="box-header">
-	  	<h3 class="box-title">&nbsp;&nbsp;<a href="list">공지사항 목록</a></h3>
+	  	<h3 class="box-title">&nbsp;&nbsp;<a href="list?boardType='NOTI'">공지사항 목록</a></h3>
 	</div>
 	<div class="box-body">
 		<ul>
