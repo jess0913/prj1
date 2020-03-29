@@ -65,7 +65,7 @@
 			var vaild = validation();
 	        
 			if ( vaild ) {
-				if( confirm( "등록 하시겠습니까?" ) ){
+				if( confirm( "수정 하시겠습니까?" ) ){
 
 				    // 등록할 파일 리스트를 formData로 데이터 입력
 // 				    var form = $("#itmFrm");
@@ -346,13 +346,13 @@
 									<tr>
 										<td><span class="red">*</span>제목</td>
 										<td>
-											<input type="text" id="contentsName" name="contentsName" class="form-control" value="">
+											<input type="text" id="contentsName" name="contentsName" class="form-control" value="${retMap.title}">
 										</td>
 									</tr>
 									<tr>
 										<td>설명</td>
 										<td>
-											<textarea class="form-control" id="description" name="description"></textarea>
+											<textarea class="form-control" id="description" name="description">${retMap.description }</textarea>
 										</td>
 									</tr>
 									<tr>
@@ -364,6 +364,7 @@
 											<div class="col-xs-10">
 												<table id="contentsList">
 												</table>
+												<a href="${retMap.fileurl }" > ${retMap.filename }</a>
 											</div>
 										</td>
 									</tr>								
@@ -373,7 +374,7 @@
 						<!-- button -->
 						<div class="box-footer">
 							<div class="row" style="height: 34px; line-height: 34px; text-align: center;">
-								<button type="button" class="btn btn-primary btn-flat" id="save"   >등록</button>
+								<button type="button" class="btn btn-primary btn-flat" id="save"   >저장</button>
 								<button type="button" class="btn btn-default btn-flat" id="cancel" >취소</button>
 							</div>
 						</div>

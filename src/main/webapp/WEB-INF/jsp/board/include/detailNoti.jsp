@@ -9,7 +9,7 @@
 	  	<h3 class="box-title">공지사항</h3>
 	</div>
 	<div class="box-body">
-		<span>${detailMap.title} </span>
+		<span>제목 : ${detailMap.title} </span>
 		<div style="text-align: left;">
 			${detailMap.description}
 		</div>
