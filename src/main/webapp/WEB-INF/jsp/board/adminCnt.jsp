@@ -102,6 +102,29 @@
 		function update(id, boardType) {
 			popupCenterModel("/admin/boardUpdate?id="+id+"&boardType="+boardType, "상세보기", "800", "600", "false"); 	
 		}
+		
+		function deleteBoard ( id, boardType ){
+			if( confirm("정말 삭제 하시겠습니까?") ){
+				$.ajax({
+					type:"POST",
+					url:"/admin/deleteBoard",
+					data: {
+							"id" : id
+						  , "boardType" : boardType
+					}, 
+					success : function( data ) {
+						if(data.isDel){
+							alert(data.msg);
+							goSearch();
+						}
+					},		           
+					error : function( xhr, status, error ) {
+						alert("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
+						alert( "error code:"+xhr.status );
+					},
+				});
+			}
+		} 
 	</script>
 </head>
 <body class="skin-purple sidebar-mini" style="height: auto; min-height: 100%;" >

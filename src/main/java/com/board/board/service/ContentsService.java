@@ -16,4 +16,7 @@ public interface ContentsService {
 	public int getTotalContentsCount( Map<String, Object> map );
 
 	public Map<String, Object> getContents( Map<String, Object> paramMap );
+
+	public Map<String, Object> deleteContents( Map<String, Object> paramMap );
+	
 }

@@ -77,4 +77,23 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.getNoti( paramMap );
 	}
 
+	@Override
+	public Map<String, Object> deleteNoti(Map<String, Object> paramMap) {
+		Map<String, Object> retMap = new HashMap<String, Object>();
+		
+		try {
+			boardDao.deleteNoti( paramMap );
+			
+			retMap.put( "isDel", true );
+			retMap.put("msg", "삭제되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			retMap.put( "isDel", true );
+			retMap.put("msg", "삭제되지 않았습니다.");
+			return retMap;
+		}
+		
+		return retMap;
+	}
+
 }

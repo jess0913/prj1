@@ -33,7 +33,7 @@
 						    <td class="sorting text-center">${item.createdate} </td>
 						    <td class="sorting text-center">
 					    		<button type="button" class="btn btn-primary" onclick="update('${item.id}','${item.boardtype}')">수정</button>
-					        	<button type="button" class="btn btn-danger" onclick="delete('${item.id}','${item.boardtype}')">삭제</button>
+					        	<button type="button" class="btn btn-danger" onclick="deleteBoard('${item.id}','${item.boardtype}')">삭제</button>
 							</td>
 						</tr>
 					</c:forEach>

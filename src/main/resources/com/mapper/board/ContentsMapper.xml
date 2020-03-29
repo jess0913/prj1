@@ -53,8 +53,14 @@
 			SET 
 				description   = #{description}
 			  , contentsName  = #{contentsName}
+		]]>		
+		<if test="fileName != null and fileName != ''">
+		<![CDATA[	
 			  , fileName  	  = #{fileName}
 			  , fileUrl  	  = #{fileUrl}
+		]]>		
+		</if>
+		<![CDATA[	
 			  , updateDate    = SYSDATE
 			  , updateUser    = #{createUser}
 			WHERE contentsId = #{contentsId}
@@ -65,7 +71,7 @@
 		<![CDATA[
 		SELECT *
 		  FROM (
-			SELECT ROW_NUMBER() OVER (ORDER BY contentsId) NUM
+			SELECT ROW_NUMBER() OVER ( ORDER BY createDate desc ) NUM
 			     , contentsId			AS id  
 			     , fileName             AS fileName 
 			     , 'CONTENTS'			AS boardType   
@@ -130,4 +136,11 @@
 		 	 WHERE contentsId LIKE '%' || #{id} || '%' 	
 		]]>		
 	</select>
+	
+	<delete id="deleteContents" parameterType="hashMap">
+		<![CDATA[
+			DELETE FROM admin.contents
+			WHERE contentsId = #{id}
+		]]>
+	</delete>
 </mapper>

@@ -20,8 +20,6 @@
 <script src="<c:url value='/js/jquery-3.2.1.min.js' />"></script>
 <script src="<c:url value='/js/bootstrap.min.js' />"></script>
 <script src="<c:url value='/js/adminlte.min.js' />"></script>
-<!-- bootstrap datepicker -->
-<script src="<c:url value='/js/bootstrap-datepicker.min.js' />"></script>
 
 <!-- CK Editor -->
 <script src="<c:url value='/js/ckeditor/ckeditor.js' />" ></script>
@@ -47,14 +45,11 @@
 						data: $("#frm").serialize() , 
 						dataType:"json" ,
 						async : false ,	
-			            beforeSend: function() {
-			                loadingOpen();
-			            },
 						success : function ( data ) {
-							if( "Y" == data.isSaved ) {
-								alert( data.msg );
-								$(opener.location).attr("href", "javascript:goSearch( 0 );");
-								windowClose();
+							if( data.isSaved ) {
+								alert( data.msg );								
+								$(opener.location).attr("href", "javascript:goSearch();");
+								window.close();
 							}
 							else {
 								alert( data.msg );
@@ -65,11 +60,7 @@
 							if ( errorCd != 200 ) {
 								alert("오류가 발생 하였습니다.\n 관리자에게 문의 하십시오");	
 							}							
-						},
-						complete: function(){
-			                // Loading Close
-			                loadingClose();
-			            }
+						}
 				     });
 				}
 		    }
@@ -79,7 +70,6 @@
 	    $("#cancel").click(function(){
 	    	window.close();
 	    });
-	    
 	})
 	
 	function validation () {

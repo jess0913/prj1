@@ -57,7 +57,7 @@
 		<![CDATA[
 		SELECT *
 		  FROM (
-			SELECT ROW_NUMBER() OVER (ORDER BY id) NUM
+			SELECT ROW_NUMBER() OVER (ORDER BY createDate desc) NUM
 			 	 , id										AS id					
 				 , title            						AS title  
 				 , 'NOTI'									AS boardType    
@@ -118,4 +118,11 @@
 		     WHERE id = #{id} 	
 		]]>		
 	</select>
+	
+	<delete id="deleteNoti" parameterType="hashMap">
+		<![CDATA[
+			DELETE FROM admin.noti
+		     WHERE id = #{id} 
+		]]>
+	</delete>
 </mapper>

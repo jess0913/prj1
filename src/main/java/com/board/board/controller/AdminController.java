@@ -181,7 +181,7 @@ public class AdminController {
 			value =  "/updateContents", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Map<String,Object> updateContents(
-			@RequestParam(name="contentsFiles") 	MultipartFile[] contentsFiles
+			@RequestParam(name="contentsFiles") 	MultipartFile[] contentsFile
 			,	@RequestParam(name="file",required = false) 	MultipartFile file
 			, @RequestParam Map<String,Object> 	paramMap 
 			) {
@@ -191,9 +191,14 @@ public class AdminController {
 		String updateUser = AuthUtil.getMemberId();
 		paramMap.put("updateUser", updateUser);
 		
-		for( MultipartFile mFile : contentsFiles ) {
-			contentsFileList.add(mFile);
+		if ( contentsFile.length > 0 ) {
+			for( MultipartFile mFile : contentsFile ) {
+				contentsFileList.add(mFile);
+			}
+			paramMap.put("contentsFile", contentsFileList.get(0));
 		}
+		
+		retMap = contentsService.updateContents(paramMap);
 		
 		return retMap;		
 	}
@@ -219,5 +224,21 @@ public class AdminController {
 		}
 		
 		return mav;
+	}
+	
+	@RequestMapping("/deleteBoard")
+	@ResponseBody
+	public Map<String,Object> deleteBoard ( @RequestParam Map<String,Object> paramMap ){
+		Map<String,Object> retMap = new HashMap<String,Object>();
+		
+		String boardType = (String) paramMap.get("boardType");
+		if( "NOTI".equals(boardType) ) {
+			retMap = boardService.deleteNoti(paramMap);
+		}
+		else {
+			retMap = contentsService.deleteContents(paramMap);
+		}
+		
+		return retMap; 
 	}
 }
