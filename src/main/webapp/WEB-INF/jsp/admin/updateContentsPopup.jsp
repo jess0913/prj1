@@ -97,7 +97,7 @@
 			                loadingOpen();
 			            },
 						success : function ( data ) {
-							if( "Y" == data.isSaved ) {
+							if( data.isSaved ) {
 								alert( data.msg );
 								$(opener.location).attr("href", "javascript:goSearch( 0 );");
 								windowClose();

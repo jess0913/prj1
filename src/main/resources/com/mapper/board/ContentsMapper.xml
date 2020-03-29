@@ -71,7 +71,7 @@
 		<![CDATA[
 		SELECT *
 		  FROM (
-			SELECT ROW_NUMBER() OVER (ORDER BY contentsId) NUM
+			SELECT ROW_NUMBER() OVER ( ORDER BY createDate desc ) NUM
 			     , contentsId			AS id  
 			     , fileName             AS fileName 
 			     , 'CONTENTS'			AS boardType   

@@ -51,7 +51,7 @@
 			                loadingOpen();
 			            },
 						success : function ( data ) {
-							if( "Y" == data.isSaved ) {
+							if(  data.isSaved ) {
 								$(opener.location).attr("href", "javascript:goSearch();");
 								windowClose();
 							}

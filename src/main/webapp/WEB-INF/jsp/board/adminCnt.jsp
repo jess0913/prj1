@@ -125,10 +125,6 @@
 				});
 			}
 		} 
-		
-		function test(){
-			alert("호출되냐??");
-		}
 	</script>
 </head>
 <body class="skin-purple sidebar-mini" style="height: auto; min-height: 100%;" >
