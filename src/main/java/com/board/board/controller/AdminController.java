@@ -199,4 +199,25 @@ public class AdminController {
 	}
 	
 	//////////////////////////////////////// 자료실 /////////////////////////////////////////////////////
+	
+	@RequestMapping("/boardUpdate")
+	public ModelAndView boardUpdate( @RequestParam Map<String,Object> paramMap ) {
+		ModelAndView mav = new ModelAndView();
+		
+		String boardType = (String) paramMap.get("boardType");
+		Map<String,Object> retMap = new HashMap<String,Object>();
+		
+		if( "NOTI".equals(boardType) ) {
+			retMap = boardService.getNoti(paramMap);
+			mav.addObject("retMap", retMap);
+			mav.setViewName("/jsp/admin/updateNotiPopup");
+		}
+		else {
+			retMap = contentsService.getContents(paramMap);
+			mav.addObject("retMap", retMap);
+			mav.setViewName("/jsp/admin/updateContentsPopup");			
+		}
+		
+		return mav;
+	}
 }

@@ -11,7 +11,7 @@
 	<div class="box-body">
 		<ul>
 			<c:forEach items="${contentsList }" var="item" >
-				<li><a href="${item.fileUrl }">${item.fileName }</a></li>
+				<li><a href="${item.fileurl }">${item.filename }</a></li>
 			</c:forEach>
 		</ul>
 	</div>

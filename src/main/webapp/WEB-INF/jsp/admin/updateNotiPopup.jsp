@@ -39,11 +39,11 @@
 		$("#save").click(function(){
 			var vaild = validation();
 			if ( vaild ) {
-				if( confirm( "등록 하시겠습니까?" ) ){
+				if( confirm( "수정 하시겠습니까?" ) ){
 					$("#description").val(CKEDITOR.instances.description.getData());
 					$.ajax({
 						type:"post",
-						url:"/admin/insertNoti",
+						url:"/admin/updateNoti",
 						data: $("#frm").serialize() , 
 						dataType:"json" ,
 						async : false ,	
@@ -52,8 +52,7 @@
 			            },
 						success : function ( data ) {
 							if( "Y" == data.isSaved ) {
-								alert( data.msg );
-								$(opener.location).attr("href", "javascript:goSearch( 0 );");
+								$(opener.location).attr("href", "javascript:goSearch();");
 								windowClose();
 							}
 							else {
@@ -138,13 +137,13 @@
 									<tr>
 										<td><span class="red">*</span>제목</td>
 										<td>
-											<input type="text" id="title" name="title" class="form-control" value="">
+											<input type="text" id="title" name="title" class="form-control" value="${retMap.title }">
 										</td>
 									</tr>
 									<tr>
 										<td><span class="red">*</span>설명</td>
 										<td>
-											<textarea class="form-control" id="description" name="description" style="resize: none;"></textarea>
+											<textarea class="form-control" id="description" name="description" style="resize: none;">${retMap.description }</textarea>
 										</td>
 									</tr>
 								</tbody>
@@ -153,7 +152,7 @@
 						<!-- button -->
 						<div class="box-footer">
 							<div class="row" style="height: 34px; line-height: 34px; text-align: center;">
-								<button type="button" class="btn btn-primary btn-flat" id="save"   >등록</button>
+								<button type="button" class="btn btn-primary btn-flat" id="save"   >저장</button>
 								<button type="button" class="btn btn-default btn-flat" id="cancel" >취소</button>
 							</div>
 						</div>
