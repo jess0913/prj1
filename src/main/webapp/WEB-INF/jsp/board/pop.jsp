@@ -78,7 +78,7 @@
 	  float:left;
 	  margin: 0;
 	  width: 50%;
-	  height: 25vh;
+	  height: 30vh;
 	  text-align: left;
 	  //background-color: #7d7d7d;
 	  display: inline-block;
@@ -106,10 +106,6 @@
 		<div class="child2">
 			<%@include  file="include/contentsList.jsp" %>
 		</div>
-		<div id="div_laypopup" align="center" class="child3">  
-		    <input type="checkbox" onClick="closePop();">오늘 하루 동안 열지 않음
-		    <a href="javascript:self.close();" onfocus="this.blur()">[닫기]</a>
-		 </div> 
 	</div>
 </body>
 </html>
