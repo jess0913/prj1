@@ -3,13 +3,35 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
+<style>
+.badge {
+   animation: blink-animation 1s steps(5, start) 10 alternate;
+   -webkit-animation: blink-animation 1s steps(5, start) 10 alternate;
+}
+@keyframes blink-animation {
+   from {
+       visibility: visibility;
+   }
+   to {
+       visibility: hidden;
+   }
+}
+@-webkit-keyframes blink-animation {
+   from {
+       visibility: visibility;
+   }
+   to {
+       visibility: hidden;
+   }
+}
+</style>
 <div class="box" style="margin: 1%">
 	<div class="box-header">
 	  	<h3 class="box-title">공지사항</h3>
 	</div>
-	<div class="box-body">
-		<span>제목 : ${detailMap.title} </span>
+	<hr>
+	<div class="badge">
+		<h4>${detailMap.title} </h4>
 		<div style="text-align: left;">
 			${detailMap.description}
 		</div>
