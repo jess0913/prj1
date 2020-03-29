@@ -91,7 +91,38 @@ public class ContentsServiceImpl implements ContentsService {
 	@Override
 	public Map<String, Object> updateContents( Map<String, Object> paramMap ) {
 		Map<String,Object> retMap = new HashMap<String,Object>();
+		
+		OutputStream out = null;
 		try {
+			Map<String,Object> map = new HashMap<String,Object>();
+			
+			if( paramMap.get( "contentsFile" ) != null ) {
+				MultipartFile mFile = (MultipartFile) paramMap.get( "contentsFile" );
+				String oriFileName =  mFile.getOriginalFilename();
+				String fileName = System.currentTimeMillis() + "_" + mFile.getOriginalFilename();
+				
+				File destdir = new File(FILE_URL); //디렉토리 가져오기
+				
+				if(!destdir.exists()){
+					destdir.mkdirs(); //디렉토리가 존재하지 않는다면 생성
+				}
+				
+				File fileOri = convert(mFile);
+				File file = new File( FILE_URL + "//" + fileName);
+				fileOri.renameTo(file);
+				out = new FileOutputStream(file);
+				byte[] bytes = mFile.getBytes();
+				out.write(bytes);
+				
+				map.put( "fileName", oriFileName );
+				map.put( "fileUrl", FILE_URL + "/" + fileName );
+			}
+			
+			map.put( "contentsName", paramMap.get("contentsName") );
+			map.put( "createUser", paramMap.get("createUser") );
+			map.put( "description", paramMap.get("description") );
+			
+			contentsDao.updateContents(map);
 			
 			retMap.put("isSaved", true);
 			retMap.put("msg", "수정 되었습니다.");
@@ -101,6 +132,15 @@ public class ContentsServiceImpl implements ContentsService {
 			retMap.put("msg", "수정되지 않았습니다.");
 			return retMap;
 		}
+		finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 		return retMap;
 	}
 
@@ -131,6 +171,25 @@ public class ContentsServiceImpl implements ContentsService {
 	@Override
 	public Map<String, Object> getContents(Map<String, Object> paramMap) {
 		return contentsDao.getContents( paramMap );
+	}
+
+	@Override
+	public Map<String, Object> deleteContents(Map<String, Object> paramMap) {
+		Map<String,Object> retMap = new HashMap<String,Object>();
+		
+		try {
+			
+			contentsDao.deleteContents( paramMap );
+			
+			retMap.put("isDel", true);
+			retMap.put("msg", "삭제 되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			retMap.put("isDel", false);
+			retMap.put("msg", "삭제되지 않았습니다.");
+			return retMap;
+		}
+		return retMap;
 	}
 
 }

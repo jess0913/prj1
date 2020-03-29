@@ -17,4 +17,6 @@ public interface BoardService {
 
 	public Map<String, Object> getNoti( Map<String, Object> paramMap );
 
+	public Map<String, Object> deleteNoti(Map<String, Object> paramMap);
+
 }

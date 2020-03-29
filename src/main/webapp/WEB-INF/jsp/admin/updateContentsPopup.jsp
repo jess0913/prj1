@@ -87,7 +87,7 @@
 				    $.ajax({
 						type:"post",
 						enctype: 'multipart/form-data',
-						url:"/admin/insertContents",
+						url:"/admin/updateContents",
 						data: formData , 
 						dataType:"json" ,
 						processData:false,

@@ -20,8 +20,6 @@
 <script src="<c:url value='/js/jquery-3.2.1.min.js' />"></script>
 <script src="<c:url value='/js/bootstrap.min.js' />"></script>
 <script src="<c:url value='/js/adminlte.min.js' />"></script>
-<!-- bootstrap datepicker -->
-<script src="<c:url value='/js/bootstrap-datepicker.min.js' />"></script>
 
 <!-- CK Editor -->
 <script src="<c:url value='/js/ckeditor/ckeditor.js' />" ></script>
@@ -52,7 +50,7 @@
 			            },
 						success : function ( data ) {
 							if( "Y" == data.isSaved ) {
-								alert( data.msg );
+								alert( data.msg );								
 								$(opener.location).attr("href", "javascript:goSearch( 0 );");
 								windowClose();
 							}
@@ -79,6 +77,8 @@
 	    $("#cancel").click(function(){
 	    	window.close();
 	    });
+	    
+	    $(opener.location).attr("href", "javascript:test();");
 	    
 	})
 	

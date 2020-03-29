@@ -118,4 +118,11 @@
 		     WHERE id = #{id} 	
 		]]>		
 	</select>
+	
+	<delete id="deleteNoti" parameterType="hashMap">
+		<![CDATA[
+			DELETE FROM admin.noti
+		     WHERE id = #{id} 
+		]]>
+	</delete>
 </mapper>

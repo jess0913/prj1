@@ -16,8 +16,10 @@ public interface ContentsDao {
 
 	public List<Map<String, Object>> getAdminContentsList( Map<String,Object> paramMap );
 
-	public int getTotalContentsCount(Map<String, Object> map);
+	public int getTotalContentsCount( Map<String, Object> map );
 
-	public Map<String, Object> getContents(Map<String, Object> paramMap);
+	public Map<String, Object> getContents( Map<String, Object> paramMap );
+
+	public void deleteContents( Map<String, Object> paramMap );
 
 }
