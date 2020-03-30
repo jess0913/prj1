@@ -181,7 +181,7 @@ public class AdminController {
 			value =  "/updateContents", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Map<String,Object> updateContents(
-			@RequestParam(name="contentsFiles") 	MultipartFile[] contentsFile
+			@RequestParam(name="contentsFile") 	MultipartFile[] contentsFile
 			,	@RequestParam(name="file",required = false) 	MultipartFile file
 			, @RequestParam Map<String,Object> 	paramMap 
 			) {

@@ -99,7 +99,7 @@
 						success : function ( data ) {
 							if( data.isSaved ) {
 								alert( data.msg );
-								$(opener.location).attr("href", "javascript:goSearch( 0 );");
+								$(opener.location).attr("href", "javascript:goSearch();");
 								windowClose();
 							}
 							else {
@@ -330,7 +330,7 @@
 			<small> - 자료 수정</small>
 		</h1>
 		<form id="frm" name="frm" enctype="multipart/form-data">
-			
+			<input type="hidden" id="contentsId" name="contentsId" value="${retMap.id }">
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="box">
