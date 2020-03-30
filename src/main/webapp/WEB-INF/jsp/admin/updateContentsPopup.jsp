@@ -99,7 +99,7 @@
 						success : function ( data ) {
 							if( data.isSaved ) {
 								alert( data.msg );
-								$(opener.location).attr("href", "javascript:goSearch( 0 );");
+								$(opener.location).attr("href", "javascript:goSearch();");
 								windowClose();
 							}
 							else {

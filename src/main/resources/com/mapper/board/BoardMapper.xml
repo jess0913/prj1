@@ -48,7 +48,7 @@
 				title        = #{title}
 			  , description  = #{description}
 			  , updateDate   = SYSDATE
-			  , updateUser   = #{createUser}
+			  , updateUser   = #{updateUser}
 			WHERE id = #{id}
 		]]>
 	</update>
