@@ -62,7 +62,7 @@
 		</if>
 		<![CDATA[	
 			  , updateDate    = SYSDATE
-			  , updateUser    = #{createUser}
+			  , updateUser    = #{updateUser}
 			WHERE contentsId = #{contentsId}
 		]]>
 	</update>
@@ -133,7 +133,7 @@
 			     , description          AS description 
 			     , contentsName         AS title
 			  FROM admin.contents
-		 	 WHERE contentsId LIKE '%' || #{id} || '%' 	
+		 	 WHERE contentsId = #{id}	
 		]]>		
 	</select>
 	

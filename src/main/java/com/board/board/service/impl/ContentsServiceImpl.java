@@ -123,9 +123,9 @@ public class ContentsServiceImpl implements ContentsService {
 				map.put( "fileName", oriFileName );
 				map.put( "fileUrl", FILE_URL + "/" + fileName );
 			}
-			
+			map.put( "contentsId", paramMap.get("contentsId") );
 			map.put( "contentsName", paramMap.get("contentsName") );
-			map.put( "createUser", paramMap.get("createUser") );
+			map.put( "updateUser", paramMap.get("updateUser") );
 			map.put( "description", paramMap.get("description") );
 			
 			contentsDao.updateContents(map);

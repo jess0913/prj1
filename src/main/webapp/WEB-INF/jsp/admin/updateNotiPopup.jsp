@@ -121,7 +121,7 @@
 			<small> - 공지사항 수정</small>
 		</h1>
 		<form id="frm" name="frm">
-			
+			<input type="hidden" id="id" name="id" value="${retMap.id }">
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="box">
