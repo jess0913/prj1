@@ -21,6 +21,9 @@ public class ContentsServiceImpl implements ContentsService {
 	
 	@Value("${contents.fileUrl}")
 	private String FILE_URL;
+	
+	@Value("${contents.fileUpUrl}")
+	private String FILE_UP_URL;
 
 	
 	@Autowired
@@ -46,14 +49,14 @@ public class ContentsServiceImpl implements ContentsService {
 					mFile.getOriginalFilename().substring(mFile.getOriginalFilename().lastIndexOf("\\")+1, mFile.getOriginalFilename().length()) : mFile.getOriginalFilename();
 			String fileName = System.currentTimeMillis() + "_" + oriFileName;
 			
-			File destdir = new File(FILE_URL); //디렉토리 가져오기
+			File destdir = new File(FILE_UP_URL); //디렉토리 가져오기
 			
 	        if(!destdir.exists()){
 	            destdir.mkdirs(); //디렉토리가 존재하지 않는다면 생성
 	        }
 	        
 			File fileOri = convert(mFile);
-			File file = new File( FILE_URL + "//" + fileName);
+			File file = new File( FILE_UP_URL + "//" + fileName);
 			fileOri.renameTo(file);
 			out = new FileOutputStream(file);
 			byte[] bytes = mFile.getBytes();
@@ -104,14 +107,14 @@ public class ContentsServiceImpl implements ContentsService {
 				String oriFileName =  mFile.getOriginalFilename();
 				String fileName = System.currentTimeMillis() + "_" + mFile.getOriginalFilename();
 				
-				File destdir = new File(FILE_URL); //디렉토리 가져오기
+				File destdir = new File(FILE_UP_URL); //디렉토리 가져오기
 				
 				if(!destdir.exists()){
 					destdir.mkdirs(); //디렉토리가 존재하지 않는다면 생성
 				}
 				
 				File fileOri = convert(mFile);
-				File file = new File( FILE_URL + "//" + fileName);
+				File file = new File( FILE_UP_URL + "//" + fileName);
 				fileOri.renameTo(file);
 				out = new FileOutputStream(file);
 				byte[] bytes = mFile.getBytes();
